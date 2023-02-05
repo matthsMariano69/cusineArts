@@ -1,0 +1,33 @@
+
+
+body{
+
+	background-color: rgba(255, 69, 0);
+    font-family: helvetica;
+}
+
+.box{
+  	background-color: white;
+    padding: 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    min-width: 80%;
+    max-width: 1200px;
+    min-height: 80%;
+    margin: auto;
+    padding-top: 65px;
+    padding-bottom: 85px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.418);
+}
+
+.submit{
+
+    position: margin 15px;
+}
+
+.navebar-brand{
+
+    font-family: arial-narrow !important;
+}
