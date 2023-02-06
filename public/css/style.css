@@ -1,8 +1,6 @@
-
-
 body{
 
-	background-color: rgba(255, 69, 0);
+	background-color: lightgray;
     font-family: helvetica;
 }
 
@@ -22,12 +20,7 @@ body{
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.418);
 }
 
-.submit{
-
-    position: margin 15px;
-}
-
-.navebar-brand{
-
-    font-family: arial-narrow !important;
+.card {
+    max-width: 500px;
+    margin-left: 17%;
 }

@@ -16,9 +16,14 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Auth::routes();
     Route::group(['middleware' => ['auth']], function(){
-        Route::get('home', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+        
         Route::get('employe/create', [App\Http\Controllers\EmployeController::class, 'create'])->name('employe-create');
         Route::post('employe/store', [App\Http\Controllers\EmployeController::class, 'store'])->name('employe-store');
+        Route::get('employe/{id}/edit', [App\Http\Controllers\EmployeController::class, 'edit'])->name('employe-edit');
+        Route::put('employe/{id}', [App\Http\Controllers\EmployeController::class, 'update'])->name('employe-update');
+        Route::delete('employe/{id}', [App\Http\Controllers\EmployeController::class, 'destroy'])->name('employe-destroy');
+
 
     });
 

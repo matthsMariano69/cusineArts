@@ -4,52 +4,49 @@
 <div class="box">
 	<div class="box-content">
 		<div class="head">
-			<h3>Funcionários</h3>
-			<h4>numero de funcionarios</h4>
+			<h3>Funcionários registrados</h3>
+			<h4>{{$count}}</h4>
 	   </div>
 	   <div class="actions">
 	   		<div class="row justify-content-end">
 	   			<div class="col-md-3">
 	   				<a type="button" class="btn btn-primary" href="{{route('employe-create')}}">Cadastrar funcionário</a>
-
-
 	   			</div>
-	   			
 	   		</div>
-	   </div><br>
+	   </div>
+	   @include('employe.alert')
+	   <br>
+   		<table class="table table-striped">
+   			<tr>
+   				<th width="5%" style="text-align:center;">#</th>
+   				<th width="30%">Nome</th>
+   				<th width="20%">Documento</th>
+   				<th width="10%">Regime</th>
+   				<th width="10%">Iníco em</th>
+   				<th width="15%">Salário</th>
+   				<th width="10%"></th>
+   			</tr>
 
-	   		<table class="table table-striped">
+   			@foreach($employes as $key => $employe)
 	   			<tr>
-	   				<th>#</th>
-	   				<th>Nome</th>
-	   				<th>Documento</th>
-	   				<th>Regime</th>
-	   				<th>Iníco em</th>
-	   				<th>Salário</th>
-	   				<th></th>
+	   				<td style="text-align:center;">{{ $employe->id }}</td>
+	   				<td>{{ $employe->name }}</td>
+	   				<td>{{ $employe->document }}</td>
+	   				<td>{{ $employe->rule == 1 ? 'CLT' : 'PJ' }}</td>
+	   				<td>{{ date('d/m/Y', strtotime($employe->start)) }}</td>
+	   				<td>R$ {{ number_format($employe->remuneration, 2, ',', '.') }}</td>
+	   				<td style="display:flex;">
+	   					<a href="{{ route('employe-edit', ['id' => $employe->id]) }}" class="btn btn-primary fa fa-edit" type="button"></a> 
+	   					<form action="{{ route('employe-destroy', ['id' => $employe->id]) }}" method="POST">
+	   						@csrf
+	   						@method('delete')
+	   						<button type="submit" class="btn btn-danger fa fa-trash" onclick="return confirm('Quer mesmo apagar?')" style="margin-left: 15%;"></button>
+	   					</form>
+	   				</td>
 	   			</tr>
-	   			<tr>
-	   				<td>1</td>
-	   				<td>Mateus</td>
-	   				<td>504.047.858-59</td>
-	   				<td>clt</td>
-	   				<td>06/02/2023</td>
-	   				<td>R$ 100.000,00</td>
-	   				<td></td>
-	   			</tr>
-	   			<tr>
-	   				<td>1</td>
-	   				<td>mateus</td>
-	   				<td>504.047.858-59</td>
-	   				<td>clt</td>
-	   				<td>06/02/2023</td>
-	   				<td>R$ 100.000,00</td>
-	   				<td></td>
-	   			</tr>
-	   		</table>				
-	   
+   			@endforeach
 
-
+   		</table>				
 	</div>
 </div>
 

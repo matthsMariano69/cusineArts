@@ -56,4 +56,63 @@ class EmployeController extends Controller
         }
     }
 
+    public function edit($id)
+    {
+        $employe = Employe::findOrFail($id);
+
+        return view('employe.edit')->with(compact('employe'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        try{
+            DB::beginTransaction();
+            $emReq = Employe::findOrFail($id);
+            $employe = $request->all();
+
+            $remuneration = str_replace('.', '', $employe['remuneration']);
+            $remuneration = str_replace(',', '.', $remuneration);
+
+            $data = [
+                'name'          => $employe['name'],
+                'document'      => $employe['document'],
+                'marital'       => $employe['marital'],
+                'birth'         => $employe['birth'],
+                'rg'            => $employe['rg'],
+                'address'       => $employe['address'],
+                'neighborhood'  => $employe['neighborhood'],
+                'city'          => $employe['city'],
+                'remuneration'  => $remuneration,
+                'office'        => $employe['office'],
+                'rule'          => $employe['rule'],
+                'start'         => $employe['start']
+            ];
+
+            $emReq->update($data);
+
+            DB::commit();
+            return redirect()->back()->with('success','Cadastro Atualizado com sucesso');
+
+        }catch (Exception $e) {
+            DB::rollBack();
+           return redirect()->back()->with('error','Houve um erro interno');
+        }
+    }
+
+    public function destroy($id)
+    {
+        try{
+            DB::beginTransaction();
+
+            $employe = Employe::findOrFail($id);
+            $employe->delete();
+
+            DB::commit();
+            return redirect()->back()->with('success','Cadastro deletado com sucesso');
+        }catch (Exception $e) {
+            DB::rollBack();
+           return redirect()->back()->with('error','Houve um erro interno');
+        }
+    }
+
 }

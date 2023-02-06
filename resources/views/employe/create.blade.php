@@ -7,7 +7,7 @@
 	<div>
 		<form class="form-group" action="{{ route('employe-store') }}" method="POST">
 		@csrf	
-		<h3 style="text-align:center;">Área de cadastro</h3>	
+		<h3 style="text-align:center;">Dados do Funcionário</h3>	
 
 			<div class="row">
 				<div class="col-md-4">
@@ -31,12 +31,12 @@
 
 				<div class="col-md-2">
 					<label>CPF / CNPJ</label>
-					<input type="text" name="document" class="form-control" placeholder="000.000.000-00" maxlength="18" required>
+					<input type="text" name="document" class="form-control" id="document" placeholder="000.000.000-00" maxlength="18" required>
 				</div>
 
 				<div class="col-md-2">
 					<label>RG</label>
-					<input type="text" name="rg" class="form-control" placeholder="00.000.000-0" maxlength="12" required>
+					<input type="text" name="rg" class="form-control mask_rg" placeholder="00.000.000-0" maxlength="12" required>
 				</div>	
 			</div><br>
 
@@ -62,7 +62,7 @@
 			<div class="row">
 				<div class="col-md-2">
 					<label>Remuneração</label>
-					<input type="text" name="remuneration" class="form-control" placeholder="Remuneração" maxlength="14" required>
+					<input type="text" name="remuneration" class="form-control mask_money" placeholder="R$" maxlength="14" required>
 				</div>
 
 				<div class="col-md-2">
