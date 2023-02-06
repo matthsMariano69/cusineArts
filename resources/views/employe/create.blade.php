@@ -26,7 +26,7 @@
 
 				<div class="col-md-2">
 					<label>Nascimento</label>
-					<input type="date" max="1999-12-31" name="birth" class="form-control" required>
+					<input type="date" max="9999-12-31" name="birth" class="form-control" required>
 				</div>
 
 				<div class="col-md-2">
